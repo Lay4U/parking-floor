@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb5cc467-f215-4da2-bec3-1c90aafc57b6" name="변경" comment="gg">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fb5cc467-f215-4da2-bec3-1c90aafc57b6" name="변경" comment="tt">
       <change beforePath="$PROJECT_DIR$/parking-floor/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/parking-floor/src/routes/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +63,7 @@
       <updated>1695711054118</updated>
       <workItem from="1695711055310" duration="1792000" />
       <workItem from="1695713233223" duration="314000" />
-      <workItem from="1695713564098" duration="869000" />
+      <workItem from="1695713564098" duration="1100000" />
     </task>
     <task id="LOCAL-00001" summary="remove">
       <option name="closed" value="true" />
@@ -98,7 +97,23 @@
       <option name="project" value="LOCAL" />
       <updated>1695714098691</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="tt">
+      <option name="closed" value="true" />
+      <created>1695714541065</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695714541065</updated>
+    </task>
+    <task id="LOCAL-00006" summary="tt">
+      <option name="closed" value="true" />
+      <created>1695714602984</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695714602984</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +122,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="remove" />
     <MESSAGE value="gg" />
-    <option name="LAST_COMMIT_MESSAGE" value="gg" />
+    <MESSAGE value="tt" />
+    <option name="LAST_COMMIT_MESSAGE" value="tt" />
   </component>
 </project>

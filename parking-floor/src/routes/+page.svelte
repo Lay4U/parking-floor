@@ -1,5 +1,6 @@
 <script>
-    import { onMount } from 'svelte';
+    import {onMount} from 'svelte';
+
     let startFloor = -20;
     let endFloor = 20;
     let selectedFloor = null;
@@ -9,6 +10,7 @@
         console.log(endFloor);
         console.log(selectedFloor);
     }
+
     function selectFloor(floor) {
         selectedFloor = floor;
         if (typeof window !== 'undefined') {
@@ -42,14 +44,12 @@
   </label>
 </div>
 
-{#if selectedFloor !== null}
-  <div>
-    {#each Array(endFloor - startFloor + 1) as _, i (i)}
-      <button on:click={() => selectFloor(i + startFloor)}>
-        {i + startFloor > 0 ? `${i + startFloor} 층` : i + startFloor < 0 ? `B${Math.abs(i + startFloor)} 층` : '기타'}
-      </button>
-    {/each}
-  </div>
-{/if}
+<div>
+  {#each Array(endFloor - startFloor + 1) as _, i (i)}
+    <button on:click={() => selectFloor(i + startFloor)}>
+      {i + startFloor > 0 ? `${i + startFloor} 층` : i + startFloor < 0 ? `B${Math.abs(i + startFloor)} 층` : '기타'}
+    </button>
+  {/each}
+</div>
 
 <p>선택된 층: {selectedFloor > 0 ? `${selectedFloor} 층` : selectedFloor < 0 ? `B${Math.abs(selectedFloor)} 층` : '기타'}</p>
