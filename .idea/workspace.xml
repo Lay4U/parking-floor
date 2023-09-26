@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb5cc467-f215-4da2-bec3-1c90aafc57b6" name="변경" comment="gg" />
+    <list default="true" id="fb5cc467-f215-4da2-bec3-1c90aafc57b6" name="변경" comment="gg">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-floor/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/parking-floor/src/routes/+page.svelte" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +64,7 @@
       <updated>1695711054118</updated>
       <workItem from="1695711055310" duration="1792000" />
       <workItem from="1695713233223" duration="314000" />
-      <workItem from="1695713564098" duration="457000" />
+      <workItem from="1695713564098" duration="869000" />
     </task>
     <task id="LOCAL-00001" summary="remove">
       <option name="closed" value="true" />
@@ -87,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695713668484</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="gg">
+      <option name="closed" value="true" />
+      <created>1695714098691</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695714098691</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

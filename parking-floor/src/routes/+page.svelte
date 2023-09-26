@@ -4,6 +4,11 @@
     let endFloor = 20;
     let selectedFloor = null;
 
+    $:{
+        console.log(startFloor);
+        console.log(endFloor);
+        console.log(selectedFloor);
+    }
     function selectFloor(floor) {
         selectedFloor = floor;
         if (typeof window !== 'undefined') {
