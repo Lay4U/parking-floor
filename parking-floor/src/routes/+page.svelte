@@ -6,23 +6,24 @@
     function selectFloor(floor) {
         selectedFloor = floor;
         if (typeof window !== 'undefined') {
+          if(localStorage === null) {
+            alert('로컬 스토리지를 지원하지 않는 브라우저입니다.');
+          }
             localStorage.setItem('selectedFloor', floor.toString());
         }
     }
 
     $: {
         if (typeof window !== 'undefined') {
-            console.log('hi');
             localStorage.setItem('startFloor', startFloor.toString());
             localStorage.setItem('endFloor', endFloor.toString());
         }
     }
 
-    $:console.log(startFloor, endFloor);
 
 </script>
 
-
+<div class="container">
 <div class="main">주차된 층: {selectedFloor > 0 ? `${selectedFloor} 층` : selectedFloor < 0 ? `B${Math.abs(selectedFloor)} 층` : '기타'}</div>
 
 <div>
@@ -38,7 +39,7 @@
     끝 층:
     <select bind:value={endFloor}>
       {#each Array(41) as _, i}
-        <option value={i - 20}>{i - 20}</option>
+        <option value={20 - i}>{20 - i}</option>
       {/each}
     </select>
   </label>
@@ -54,6 +55,8 @@
   </div>
 {/if}
 
+  <p><a href="https://github.com/Lay4U/parking-floor">소스코드</a></p>
+</div>
 
 
 <style>
@@ -147,6 +150,28 @@
 
     .button:hover {
         transform: scale(1.05);
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
+    select{
+      width: 5rem;
+        height: 2rem;
+        border-radius: 0.5rem;
+        border: none;
+        background-color: chocolate;
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+        cursor: pointer;
+        transition: transform .3s ease-in-out;
+
     }
 
 </style>

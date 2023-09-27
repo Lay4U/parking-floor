@@ -7,6 +7,17 @@
     <list default="true" id="fb5cc467-f215-4da2-bec3-1c90aafc57b6" name="변경" comment="tt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-floor/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/parking-floor/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/chunks/index.6cf9c9d4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/chunks/scheduler.b95eede2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/chunks/singletons.007e5771.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/entry/app.e5430fd3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/entry/start.2171476f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/nodes/0.e086c0e4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/nodes/1.b9fd8e97.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/immutable/nodes/2.d3661b3e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/_app/version.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +76,7 @@
       <workItem from="1695711055310" duration="1792000" />
       <workItem from="1695713233223" duration="314000" />
       <workItem from="1695713564098" duration="5486000" />
+      <workItem from="1695801867487" duration="477000" />
     </task>
     <task id="LOCAL-00001" summary="remove">
       <option name="closed" value="true" />
