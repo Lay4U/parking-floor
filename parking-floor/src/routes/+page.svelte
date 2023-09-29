@@ -1,61 +1,70 @@
 <script>
-    let startFloor = typeof window !== 'undefined' && localStorage.getItem('startFloor') !== null ? Number(localStorage.getItem('startFloor')) : -20;
-    let endFloor = typeof window !== 'undefined' && localStorage.getItem('endFloor') !== null ? Number(localStorage.getItem('endFloor')) : 20;
-    let selectedFloor = typeof window !== 'undefined' && localStorage.getItem('selectedFloor') !== null ? Number(localStorage.getItem('selectedFloor')) : '기타';
+  const getFromLocalStorage = (key, defaultValue) =>
+    typeof window !== 'undefined' && localStorage.getItem(key) !== null
+      ? Number(localStorage.getItem(key))
+      : defaultValue;
 
-    function selectFloor(floor) {
-        selectedFloor = floor;
-        if (typeof window !== 'undefined') {
-          if(localStorage === null) {
-            alert('로컬 스토리지를 지원하지 않는 브라우저입니다.');
-          }
-            localStorage.setItem('selectedFloor', floor.toString());
-        }
-    }
+  const setToLocalStorage = (key, value) =>
+    typeof window !== 'undefined' && localStorage.setItem(key, value.toString());
 
-    $: {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('startFloor', startFloor.toString());
-            localStorage.setItem('endFloor', endFloor.toString());
-        }
-    }
+  const updateLocalStorage = ({startFloor, endFloor}) => {
+    setToLocalStorage('startFloor', startFloor);
+    setToLocalStorage('endFloor', endFloor);
+  };
 
+  let floorsState = {
+    startFloor: getFromLocalStorage('startFloor', -20),
+    endFloor: getFromLocalStorage('endFloor', 20),
+    selectedFloor: getFromLocalStorage('selectedFloor', '기타'),
+  };
+
+  const selectFloor = floor => {
+    floorsState = {...floorsState, selectedFloor: floor};
+    setToLocalStorage('selectedFloor', floor);
+  };
+
+  $: updateLocalStorage(floorsState);
 
 </script>
 
 <div class="container">
-<div class="main">주차된 층: {selectedFloor > 0 ? `${selectedFloor} 층` : selectedFloor < 0 ? `B${Math.abs(selectedFloor)} 층` : '기타'}</div>
+    <div class="main">주차된
+        층: {floorsState.selectedFloor > 0 ? `${floorsState.selectedFloor} 층` : floorsState.selectedFloor < 0 ? `B${Math.abs(floorsState.selectedFloor)} 층` : '기타'}</div>
 
-<div>
-  <label>
-    시작 층:
-    <select bind:value={startFloor}>
-      {#each Array(41) as _, i}
-        <option value={i - 20}>{i - 20}</option>
-      {/each}
-    </select>
-  </label>
-  <label>
-    끝 층:
-    <select bind:value={endFloor}>
-      {#each Array(41) as _, i}
-        <option value={20 - i}>{20 - i}</option>
-      {/each}
-    </select>
-  </label>
-</div>
+    <div>
+        <label>
+            시작 층:
+            <select bind:value={floorsState.startFloor}>
+                {#each Array(41) as _, i}
+                    <option value={i - 20}>{i - 20}</option>
+                {/each}
+            </select>
+        </label>
+        <label>
+            끝 층:
+            <select bind:value={floorsState.endFloor}>
+                {#each Array(41) as _, i}
+                    <option value={20 - i}>{20 - i}</option>
+                {/each}
+            </select>
+        </label>
+    </div>
 
-{#if selectedFloor !== null && endFloor > startFloor}
-  <div>
-    {#each Array(endFloor - startFloor + 1) as _, i (i)}
-      <button class:selected={selectedFloor == i + startFloor} class="button" on:click={() => selectFloor(i + startFloor)}>
-        {i + startFloor > 0 ? `${i + startFloor} 층` : i + startFloor < 0 ? `B${Math.abs(i + startFloor)} 층` : '기타'}
-      </button>
-    {/each}
-  </div>
-{/if}
+    {#if floorsState.selectedFloor !== null && floorsState.endFloor > floorsState.startFloor}
+        <div>
+            {#each Array(floorsState.endFloor - floorsState.startFloor + 1) as _, i (i)}
+                <button
+                        class:selected={floorsState.selectedFloor == i + floorsState.startFloor}
+                        class="button"
+                        on:click={() => selectFloor(i + floorsState.startFloor)}
+                >
+                    {i + floorsState.startFloor > 0 ? `${i + floorsState.startFloor} 층` : i + floorsState.startFloor < 0 ? `B${Math.abs(i + floorsState.startFloor)} 층` : '기타'}
+                </button>
+            {/each}
+        </div>
+    {/if}
 
-  <p><a href="https://github.com/Lay4U/parking-floor">소스코드</a></p>
+    <p><a href="https://github.com/Lay4U/parking-floor">소스코드</a></p>
 </div>
 
 
@@ -63,6 +72,7 @@
     .button {
         display: inline-block;
         width: calc(100% / 3 - 20px);
+        height: 4rem;
         margin: 10px;
         padding: 1rem 2rem;
         border-radius: .5rem;
@@ -91,42 +101,40 @@
         height: 100%;
         width: 100%;
         border-radius: .5rem;
-        background:
-                linear-gradient(
-                        to bottom,
-                        rgba(8,77,126,0)0%,
-                        rgba(8,77,126,.42)100%
-                ),
-                linear-gradient(
-                        to right,
-                        rgba(184,238,255,.32),
-                        rgba(184,238,255,.32)
-                );
-        z-index:-1;
+        background: linear-gradient(
+                to bottom,
+                rgba(8, 77, 126, 0) 0%,
+                rgba(8, 77, 126, .42) 100%
+        ),
+        linear-gradient(
+                to right,
+                rgba(184, 238, 255, .32),
+                rgba(184, 238, 255, .32)
+        );
+        z-index: -1;
     }
 
     .button::after {
-        content:"";
-        display:block;
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        background:
-                linear-gradient(
-                        to bottom,
-                        rgba(8,77,126,0)0%,
-                        rgba(8,77,126,.42)100%
-                ),
-                linear-gradient(
-                        to right,
-                        rgba(184,238,255,.32),
-                        rgba(184,238,255,.32)
-                );
-        border-radius:.5rem;
-        opacity:.6;
-        z-index:-1;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                to bottom,
+                rgba(8, 77, 126, 0) 0%,
+                rgba(8, 77, 126, .42) 100%
+        ),
+        linear-gradient(
+                to right,
+                rgba(184, 238, 255, .32),
+                rgba(184, 238, 255, .32)
+        );
+        border-radius: .5rem;
+        opacity: .6;
+        z-index: -1;
     }
 
     .button:hover {
@@ -152,15 +160,17 @@
         transform: scale(1.05);
     }
 
-    .container{
+    .container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         font-size: 20px;
+        background: #F5F5F5
     }
-    select{
-      width: 5rem;
+
+    select {
+        width: 5rem;
         height: 2rem;
         border-radius: 0.5rem;
         border: none;
@@ -171,7 +181,6 @@
         text-align: center;
         cursor: pointer;
         transition: transform .3s ease-in-out;
-
     }
 
 </style>
