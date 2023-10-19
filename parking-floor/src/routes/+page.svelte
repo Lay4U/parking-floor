@@ -7,20 +7,29 @@
   const setToLocalStorage = (key, value) =>
     typeof window !== 'undefined' && localStorage.setItem(key, value.toString());
 
-  const updateLocalStorage = ({startFloor, endFloor}) => {
+  const updateLocalStorage = ({startFloor, endFloor, parkedDate}) => {
     setToLocalStorage('startFloor', startFloor);
     setToLocalStorage('endFloor', endFloor);
+    if(parkedDate) setToLocalStorage('parkedDate', parkedDate);
+  };
+
+  const updateParkedDate = () => {
+      const currentDate = new Date().toLocaleString();
+      floorsState = {...floorsState, parkedDate: currentDate};
+      updateLocalStorage(floorsState);
   };
 
   let floorsState = {
     startFloor: getFromLocalStorage('startFloor', -20),
     endFloor: getFromLocalStorage('endFloor', 20),
     selectedFloor: getFromLocalStorage('selectedFloor', '기타'),
+      parkedDate: getFromLocalStorage('parkedDate', null),
   };
 
   const selectFloor = floor => {
     floorsState = {...floorsState, selectedFloor: floor};
     setToLocalStorage('selectedFloor', floor);
+    updateParkedDate();
   };
 
   $: updateLocalStorage(floorsState);
@@ -30,7 +39,9 @@
 <div class="container">
     <div class="main">주차된
         층: {floorsState.selectedFloor > 0 ? `${floorsState.selectedFloor} 층` : floorsState.selectedFloor < 0 ? `B${Math.abs(floorsState.selectedFloor)} 층` : '기타'}</div>
-
+  <div class="parked-date">
+    주차 날짜: {floorsState.parkedDate ? floorsState.parkedDate : 'N/A'}
+  </div>
     <div>
         <label>
             시작 층:
