@@ -13,23 +13,23 @@
     if(parkedDate) setToLocalStorage('parkedDate', parkedDate);
   };
 
-  const updateParkedDate = () => {
-      const currentDate = new Date().toLocaleString();
-      floorsState = {...floorsState, parkedDate: currentDate};
-      updateLocalStorage(floorsState);
-  };
-
   let floorsState = {
     startFloor: getFromLocalStorage('startFloor', -20),
     endFloor: getFromLocalStorage('endFloor', 20),
     selectedFloor: getFromLocalStorage('selectedFloor', '기타'),
-      parkedDate: getFromLocalStorage('parkedDate', null),
+    parkedDate: getFromLocalStorage('parkedDate', null),
   };
 
   const selectFloor = floor => {
     floorsState = {...floorsState, selectedFloor: floor};
     setToLocalStorage('selectedFloor', floor);
     updateParkedDate();
+  };
+
+  const updateParkedDate = () => {
+    const currentDate = new Date().toLocaleString();
+    floorsState = {...floorsState, parkedDate: currentDate};
+    setToLocalStorage('parkedDate', currentDate);
   };
 
   $: updateLocalStorage(floorsState);
