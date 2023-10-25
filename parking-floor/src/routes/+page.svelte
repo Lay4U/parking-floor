@@ -1,7 +1,8 @@
 <script>
   const getFromLocalStorage = (key, defaultValue) =>
     typeof window !== 'undefined' && localStorage.getItem(key) !== null
-      ? Number(localStorage.getItem(key))
+      ? isNaN(Number(localStorage.getItem(key)))
+        ? localStorage.getItem(key) : Number(localStorage.getItem(key))
       : defaultValue;
 
   const setToLocalStorage = (key, value) =>
