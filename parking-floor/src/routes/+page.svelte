@@ -36,11 +36,6 @@
   $: updateLocalStorage(floorsState);
 
 </script>
-<head>
-    <title>주차 층 기록</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044173219582119"
-            crossorigin="anonymous"></script>
-</head>
 <div class="container">
     <div class="main">주차된
         층: {floorsState.selectedFloor > 0 ? `${floorsState.selectedFloor} 층` : floorsState.selectedFloor < 0 ? `B${Math.abs(floorsState.selectedFloor)} 층` : '기타'}</div>
